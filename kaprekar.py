@@ -1,18 +1,22 @@
+# #287 [Easy] Kaprekar's Routine
+# https://www.reddit.com/r/dailyprogrammer/comments/56tbds/20161010_challenge_287_easy_kaprekars_routine/
+
+
 def largest_digit(n):
     return int(max(str(n)))
 
 
-def desc_digits(n):
+def desc_digits(n, std=True):
     n = "0" * (4 - len(str(n))) + str(n)
-    return int(('').join(sorted(n, reverse=True)))
+    return int(('').join(sorted(str(n), reverse=std)))
 
 
 def kaprekar(n, iters=0):
+    if n in [1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 9999]:
+        return 0
     if n == 6174:
         return iters
-    d_digits = desc_digits(n)
-    a_digits = int(''.join(sorted(str(d_digits))))
-    kap = d_digits - a_digits
+    kap = desc_digits(n) - desc_digits(n, False)
     return kaprekar(kap, iters=iters + 1)
 
 
@@ -31,7 +35,7 @@ if __name__ == "__main__":
     assert largest_digit(9800) == 9
     assert largest_digit(3333) == 3
     assert largest_digit(120) == 2
-    print("All standard tests passed.")
+    print("All Standard passed")
 
     assert desc_digits(1234) == 4321
     assert desc_digits(3253) == 5332
@@ -45,4 +49,4 @@ if __name__ == "__main__":
     assert kaprekar(6174) == 0
     print("All Bonus 2 passed")
 
-    print(largest_kap())
+    print("Largest # of iterations is: ", largest_kap())
