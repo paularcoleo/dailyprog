@@ -3,11 +3,11 @@
 
 eledict = {}
 
+
 def find_preferred_symbols(element):
     symbols = []
-    first, second = '', ''
     for i, char in enumerate(list(element)):
-        for char2 in list(element[i+1:]):
+        for char2 in list(element[i + 1:]):
             option = char + char2
             if option not in symbols:
                 symbols.append(option)
@@ -25,7 +25,8 @@ def find_first_available_symbol(symbols, eledict):
 with open("splurth02.txt") as fh:
     for line in fh:
         element = line.strip().lower()
-        sym = find_first_available_symbol(find_preferred_symbols(element), eledict)
+        sym = find_first_available_symbol(find_preferred_symbols(element),
+                                          eledict)
         if sym is not None:
             eledict[element] = sym
         else:

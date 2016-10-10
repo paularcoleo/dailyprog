@@ -12,18 +12,23 @@ inputs = {
     'Garbo': 'Zz'
 }
 
+
 def check_Symbol(element, symbol):
     element_chars = list(element.lower())
     first, second = list(symbol.lower())
     first_indices = [i for i, x in enumerate(element_chars) if x == first]
     if len(first_indices) > 0:
-        for i in range(0,len(first_indices)):
-            second_indices = [i for i, x in enumerate(element_chars[first_indices[i]+1:]) if x == second]
+        for i in range(0, len(first_indices)):
+            second_indices = [
+                i for i, x in enumerate(element_chars[first_indices[i] + 1:])
+                if x == second]
+
             valid = True if len(second_indices) > 0 else False
-            if valid: return valid
+            if valid:
+                return valid
     return False
 
 
 for element, symbol in inputs.items():
-    print("Default:  " + element + ", " +\
+    print("Default:  " + element + ", " +
           symbol + " -> " + str(check_Symbol(element, symbol)))
