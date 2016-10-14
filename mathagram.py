@@ -1,3 +1,6 @@
+# #287 [Intermediate] Mathagrams
+# https://www.reddit.com/r/dailyprogrammer/comments/576o8o/20161012_challenge_287_intermediate_mathagrams/
+
 import re
 from collections import Counter
 from itertools import permutations

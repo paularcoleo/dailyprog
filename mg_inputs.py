@@ -3,8 +3,8 @@ test_inputs = [('xxx + x81 = 9x4', 1),
                ('xxx + 39x = x75', 1),
                ('xxx + xxx + 23x + 571 = xxx + x82', 2),
                ('xxx + xxx + xx7 + 212 = xxx + 889', 2),
-               ('xxx + xxx + 1x6 + 142 = xxx + 553', 2)]
-# ('xxx + xxx + xxx + 4x1 + 689 = xxx + xxx + x5x + 957', 3),
+               ('xxx + xxx + 1x6 + 142 = xxx + 553', 2),
+               ('xxx + xxx + xxx + 4x1 + 689 = xxx + xxx + x5x + 957', 3)]
 # ('xxx + xxx + xxx + 64x + 581 = xxx + xxx + xx2 + 623', 3),
 # ('xxx + xxx + xxx + x81 + 759 = xxx + xxx + 8xx + 462', 3),
 # ('xxx + xxx + xxx + 6x3 + 299 = xxx + xxx + x8x + 423', 3),
