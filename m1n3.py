@@ -23,6 +23,11 @@ class Window(QMainWindow):
         self.m1n1ng = False
         self.loop_index = 0
 
+        self.looting = False
+        self.should_loot = False
+        self.loot_timer = QTimer()
+        self.loot_timer.timeout.connect(self.loot)
+
         self.m1n3_timer = QTimer()
         self.m1n3_timer.timeout.connect(self.m1n3)
 
@@ -34,6 +39,7 @@ class Window(QMainWindow):
         keyboard.add_hotkey('ctrl+t', self.toggle_add)
         keyboard.add_hotkey('ctrl+p', self.print_points)
         keyboard.add_hotkey('ctrl+m', self.toggle_should_m1n3)
+        keyboard.add_hotkey('ctrl+`', self.toggle_should_loot)
         self.show()
 
 
@@ -55,6 +61,8 @@ class Window(QMainWindow):
     def standby(self):
         if (self.should_m1n3 != self.m1n1ng):
             self.toggle_m1n3()
+        if (self.should_loot != self.looting):
+            self.toggle_loot()
 
     def m1n3(self):
         old = pyautogui.position()
@@ -76,6 +84,20 @@ class Window(QMainWindow):
         else:
             self.m1n1ng = False
             self.m1n3_timer.stop()
+
+    def toggle_should_loot(self):
+        self.should_loot = not self.should_loot
+
+    def toggle_loot(self):
+        if not self.looting:
+            self.looting = True
+            self.loot_timer.start(10)
+        else:
+            self.looting = False
+            self.loot_timer.stop()
+
+    def loot(self):
+        pyautogui.click()
 
 
 def run():
